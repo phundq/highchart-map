@@ -1,3 +1,5 @@
+import { HighChartsModule } from './shared/chart/highcharts.module';
+import { MaterialCustomModule } from './shared/mat-custom/mat-custom.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -10,7 +12,9 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MaterialCustomModule,
+    HighChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

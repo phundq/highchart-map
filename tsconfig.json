@@ -11,10 +11,10 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "lib": ["es2018", "dom"],
+    "resolveJsonModule": true, // = true to import Json
+    "esModuleInterop": true, // = true to import Json
+    "allowSyntheticDefaultImports": true // = true to import Json
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
