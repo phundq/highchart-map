@@ -71,25 +71,73 @@ export class ChartMapComponent implements OnInit {
 
     Highcharts.mapChart('container', {
       chart: {
-        map: mapVN
-      },
-      title: {
-        text: 'Highmaps basic demo'
+        map: mapVN,
+        events: {
+          click: function (e: any) {
+            console.log(
+              e.xAxis[0].value,
+              e.yAxis[0].value
+            )
+          }
+        }
       },
 
-      subtitle: {
-        text: 'Source map: Vietnam'
+      credits: {
+        enabled: false
       },
+
+      title: {
+        text: ''
+      },
+
+      // subtitle: {
+      //   text: 'Source map: Vietnam'
+      // },
 
       mapNavigation: {
         enabled: true,
         buttonOptions: {
           verticalAlign: 'bottom'
-        }
+        },
+        enableDoubleClickZoomTo: true,
+        mouseWheelSensitivity: 1.5
       },
 
       colorAxis: {
-        min: 0
+        dataClasses: [
+          {
+            name: "0",
+            from: 0,
+            to: 0,
+            color: "#81c784"
+          },
+          {
+            name: "1 - 10",
+            from: 1,
+            to: 10,
+            color: "#fff9c4"
+          },
+          {
+            name: "11 - 100",
+            from: 11,
+            to: 100,
+            color: "#ff8f00"
+          },
+          {
+            name: "101 - 1000",
+            from: 101,
+            to: 1000,
+            color: "#ff5722"
+          },
+          {
+            name: "trên 1000",
+            from: 1001,
+            color: "#bf360c"
+          }],
+        min: 0,
+        max: 100,
+        // type: 'logarithmic',
+        // lineColor: "#000000",
       },
 
       series: [
@@ -98,17 +146,22 @@ export class ChartMapComponent implements OnInit {
           name: "Example data",
           states: {
             hover: {
-              color: "#BADA55"
+              color: "#0277bd"
             }
           },
           dataLabels: {
-            enabled: true,
+            enabled: false,
             format: "{point.name}"
           },
           allAreas: false,
           data: this.dataVN
         }
-      ]
+      ],
+      legend: {
+        symbolHeight: 12,
+        symbolWidth: 12,
+        symbolRadius: 0
+    },
 
     });
   }
